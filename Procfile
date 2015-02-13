@@ -1,0 +1,1 @@
+web: gunicorn wfm_plattform.wsgi --log-file -
