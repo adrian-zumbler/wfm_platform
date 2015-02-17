@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'djangobower',
     'tasks',
+    'organization',
 
 )
 BOWER_PATH = '/usr/bin/bower'
