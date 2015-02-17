@@ -42,6 +42,8 @@ INSTALLED_APPS = (
     'djangobower',
     'tasks',
     'organization',
+    'type_tasks',
+    
 
 )
 BOWER_PATH = '/usr/bin/bower'
