@@ -2,43 +2,48 @@
 <script type="text/javascript" src='{% static 'jquery/dist/jquery.js' %}'></script>
 <script type="text/javascript" src='{% static 'webcomponentsjs/webcomponents.js' %}'></script>
 <link rel="stylesheet" type="text/css" href='{% static 'css/main.css'%}'>
-<link rel="import" href='{% static 'paper-checkbox/paper-checkbox.html'%}'>
+<link rel="import" href='{% static 'core-toolbar/core-toolbar.html'%}'>
+<link rel="import" href='{% static 'core-menu/core-menu.html'%}'>
+<link rel="import" href='{% static 'core-item/core-item.html'%}'>
+<link rel="import" href='{% static 'core-header-panel/core-header-panel.html'%}'>
+<link rel="import" href='{% static 'core-drawer-panel/core-drawer-panel.html'%}'>
+<link rel="import" href='{% static 'core-scaffold/core-scaffold.html'%}'>
+<link rel="import" href="{% static 'elements/task/task-card.html'%}">
+
+
 <style shim-shadowdom>
   
-    body {
-      font-family: RobotoDraft, 'Helvetica Neue', Helvetica, Arial;
-      margin: 0;
-      padding: 24px;
-      -webkit-tap-highlight-color: rgba(0,0,0,0);
-      -webkit-touch-callout: none;
-    }
-    
-    paper-checkbox {
-      padding: 20px 20px 20px 0;
-    }
-    
-    section {
-      width: 300px;
-    }
-    
-    paper-checkbox.blue::shadow #ink[checked] {
-      color: #BBDEFB;
-    }
 
-    paper-checkbox.blue::shadow #checkbox.checked {
-      background-color: #2196F3;
-      border-color: #2196F3;
-    }
     
   </style>
 
 
-<h1>Hola Mundo</h1>
-
-<core-label horizontal layout>
-      <paper-checkbox for></paper-checkbox>
-      <div horizontal layout>
-        <h4>Notifications</h4>
-        <div>Notify me about updates to apps or games that I've downloaded</div>
+<body unresolved >
+    <core-scaffold>
+      <core-header-panel  navigation flex mode="seamed">
+        <core-toolbar class="header-panel">
+          <figure class="avatarContainer">
+            <img src="" alt="" class="avatar">
+          </figure>
+      </core-toolbar>
+        <core-menu>
+          <core-item icon="" class='menu-item' label="Time Line"></core-item>
+          <core-item icon="settings" label="Bitacora"></core-item>
+          <core-item icon="settings" label="Tareas"></core-item>
+          <core-item icon="settings" label="Notas"></core-item>
+        </core-menu>
+      </core-header-panel>
+      <div tool>hola</div>
+      <div fit>
+        <task-card>
+          <h2>Adrian Meza</h2>
+      </task-card>
+      <task-card>
+          <h2>Adrian Meza</h2>
+      </task-card>
       </div>
-    </core-label>
+    </core-scaffold>
+
+</body>
+
+

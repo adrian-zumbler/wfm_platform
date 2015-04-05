@@ -43,6 +43,8 @@ INSTALLED_APPS = (
     'tasks',
     'organization',
     'type_tasks',
+    'tags',
+    'profiles',
     
 
 )
@@ -105,7 +107,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
-
+MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media')
+MEDIA_URL = '/media/'
 BOWER_INSTALLED_APPS = (
     'jquery',
     'underscore',
