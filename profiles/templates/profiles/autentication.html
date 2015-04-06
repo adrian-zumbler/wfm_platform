@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Login</title>
+	{% load static from staticfiles %}
+	<script type="text/javascript" src='{% static 'jquery/dist/jquery.js' %}'></script>
+	<script type="text/javascript" src='{% static 'webcomponentsjs/webcomponents.js' %}'></script>
+	<link rel="stylesheet" type="text/css" href='{% static 'css/main.css'%}'>
+	<link rel="import" href='{% static 'core-toolbar/core-toolbar.html'%}'>
+	<link rel="import" href='{% static 'paper-input/paper-input-decorator.html' %}'/>
+	<link rel="import"  href="{% static 'paper-button/paper-button.html' %}">
+	<link href='http://fonts.googleapis.com/css?family=Roboto:400,300,500' rel='stylesheet' type='text/css'>
+</head>
+<body>	
+	<core-toolbar class="header">
+	
+	</core-toolbar>
+	<section class="container">
+		<article class="Introduction">
+			<div class="Introduction-mainContainer">
+				<figure class="Introduction-imgContainer">
+					<img src="{% static 'img/LOGOTIPO 1.png'%}" alt="Ideal Contac Center" class="Introduction-img">
+				</figure>
+				<div class="Introduction-contentContainer">
+					<p class="Introduction-content">
+						En ideal Contac Center brindamos servicios de atencion a usuarios y soporte tecnico, en representacion de nuestros clientes que requieren la excelencia de acuerdo a la siguiente directriz:
+					</p>
+					<p class="Introduction-content">
+						Cumplir y superar sus expectativas, a través de la competencia y compromiso de nuestro personal, nuestros procesos y tecnologias, con un enfoque de mejora continua dentro y fuera de nuestra organización, que nos permita brindar un servicio oportuno y eficiente, con calidad y dando un valor agregado, para consolidarnos en el mercado como el más grande proveedor de nuestro ramo.
+					</p>
+				</div>
+			</div>
+		</article>
+		<paper-shadow z=3 class="Login-formContainer">
+			<form action="" class="Login-form" method="post">
+			{% csrf_token %}	
+				<paper-input-decorator floatingLabel label="Usuario">
+				  	<input name="username" is="core-input">
+				</paper-input-decorator>
+				<paper-input-decorator  floatingLabel label="Contraseña">
+				  	<input name="password" type="password" is="core-input">
+				</paper-input-decorator>
+				<a href="" class="link">¿Olvidaste tu Contraseña?</a>
+				<button class="Login-button"><paper-button class="btn bg-orange" raised recenteringTouch>Ingresar</paper-button></button>
+			</form>
+		</paper-shadow>
+	</section>
+</body>
+</html>
