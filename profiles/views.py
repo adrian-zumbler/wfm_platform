@@ -15,3 +15,6 @@ def index(request):
 		 'email': email
 		 }
 		)
+
+def login(request):
+	return render(request,'profiles/login.html')	
