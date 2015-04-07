@@ -91,6 +91,7 @@ DATABASES = {
     }
 }
 
+
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
 
@@ -117,3 +118,5 @@ BOWER_INSTALLED_APPS = (
     'underscore',
     'Polymer/polymer#~0.5.4',
 )
+
+LOGIN_URL = '/profiles/autentication/'

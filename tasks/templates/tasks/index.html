@@ -23,9 +23,20 @@
     <core-scaffold>
       <core-header-panel  navigation flex mode="seamed">
         <core-toolbar class="header-panel">
-          <figure class="avatarContainer">
-            <img src="" alt="" class="avatar">
-          </figure>
+          <div class="ProfileCard">
+            {% if user%}
+              <figure class="ProfileCard-avatarContainer">
+              
+              <img src="{{user.profile.avatar.url}}" alt="" class="ProfileCard-avatar">
+              
+            </figure>
+            <div class="ProfileCard-usernameContainer">
+              <p class="ProfileCard-username">
+                {{user.username}}
+              </p>
+            </div>
+          {% endif %}
+          </div>
       </core-toolbar>
         <core-menu>
           <core-item icon="" class='menu-item' label="Time Line"></core-item>

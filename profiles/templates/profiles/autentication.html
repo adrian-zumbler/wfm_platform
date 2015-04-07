@@ -43,6 +43,9 @@
 				</paper-input-decorator>
 				<a href="" class="link">¿Olvidaste tu Contraseña?</a>
 				<button class="Login-button"><paper-button class="btn bg-orange" raised recenteringTouch>Ingresar</paper-button></button>
+				{% if errorMessage %}
+					<p>{{errorMessage}}<p>
+				{%endif%}
 			</form>
 		</paper-shadow>
 	</section>

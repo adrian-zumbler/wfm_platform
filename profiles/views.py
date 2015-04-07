@@ -1,7 +1,8 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.shortcuts import render, render_to_response
+from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
+from django.template import RequestContext
 
 def index(request):
 	profiles = User.objects.all()
@@ -26,7 +27,11 @@ def autentication(request):
 		if user is not None:
 			if user.is_active:
 				login(request,user)
-				return render(request,'profiles/index.html')
+				return HttpResponseRedirect('/tasks/')
+			else:
+				pass
+		else:
+			return render_to_response('profiles/autentication.html',{"errorMessage": "El usuario o contasena son incorrectos"},context_instance=RequestContext(request))			
 	return render(request,'profiles/autentication.html')			
 
 
