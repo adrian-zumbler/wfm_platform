@@ -2,60 +2,122 @@
 <script type="text/javascript" src='{% static 'jquery/dist/jquery.js' %}'></script>
 <script type="text/javascript" src='{% static 'webcomponentsjs/webcomponents.js' %}'></script>
 <link rel="stylesheet" type="text/css" href='{% static 'css/main.css'%}'>
-<link rel="import" href='{% static 'core-toolbar/core-toolbar.html'%}'>
-<link rel="import" href='{% static 'core-menu/core-menu.html'%}'>
-<link rel="import" href='{% static 'core-item/core-item.html'%}'>
-<link rel="import" href='{% static 'core-header-panel/core-header-panel.html'%}'>
-<link rel="import" href='{% static 'core-drawer-panel/core-drawer-panel.html'%}'>
-<link rel="import" href='{% static 'core-scaffold/core-scaffold.html'%}'>
-<link rel="import" href="{% static 'elements/task/task-card.html'%}">
 <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,500' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{% static 'bootstrap/dist/css/bootstrap.css'%}">
 
+<script type="text/javascript" src="{% static 'bootstrap/dist/js/bootstrap.min.js'%}"></script>
 
-<style shim-shadowdom>
-  
-
+<body>
+  <header class="Header">
     
-  </style>
-
-
-<body unresolved >
-    <core-scaffold>
-      <core-header-panel  navigation flex mode="seamed">
-        <core-toolbar class="header-panel">
-          <div class="ProfileCard">
-            {% if user%}
-              <figure class="ProfileCard-avatarContainer">
-              
-              <img src="{{user.profile.avatar.url}}" alt="" class="ProfileCard-avatar">
-              
-            </figure>
-            <div class="ProfileCard-usernameContainer">
-              <p class="ProfileCard-username">
-                {{user.username}}
-              </p>
-            </div>
-          {% endif %}
-          </div>
-      </core-toolbar>
-        <core-menu>
-          <core-item icon="" class='menu-item' label="Time Line"></core-item>
-          <core-item icon="settings" label="Bitacora"></core-item>
-          <core-item icon="settings" label="Tareas"></core-item>
-          <core-item icon="settings" label="Notas"></core-item>
-        </core-menu>
-      </core-header-panel>
-      <div tool>hola</div>
-      <div fit>
-        <task-card>
-          <h2>Adrian Meza</h2>
-      </task-card>
-      <task-card>
-          <h2>Adrian Meza</h2>
-      </task-card>
+  </header>
+  <div class="row">
+    
+  
+  <div class="MainMenu padding-reset col-md-2 ">
+     <div class="Header-userContainer">
+      {% if user%}
+      <figure class="Header-avatarContainer">
+        <img src="{{user.profile.avatar.url}}" alt="" class="Header-avatar">
+      </figure>
+      <div class="Header-usernameContainer ">
+        <p class="Header-username">{{user.username}}</p>
       </div>
-    </core-scaffold>
+      {% endif %}
+    </div>
+    <nav class="MainMenu-menu">
+      <ul class="MainMenu-list">
+        <li class="MainMenu-item"><a href="" class="MainMenu-link">Bitacora</a></li>
+        <li class="MainMenu-item"><a href="" class="MainMenu-link">Tareas</a></li>
+        <li class="MainMenu-item"><a href="" class="MainMenu-link">Agentes</a></li>
+      </ul> 
+    </nav>
+  </div>
 
+
+
+
+  <div class="Main-content col-md-10">
+    <div class="row">
+      
+    
+      <Section class="ViewContent col-md-12">
+       <div class="row"> 
+           <div class="Search">
+              <div class="wrap-container">
+                <form class ="form-inline" action="">
+                  <div class="form-group">
+                    <label class="sr-only" for="exampleInputEmail3">Email address</label>
+                    <input type="email" class="form-control" id="buscar" placeholder="Buscar">
+                  </div>
+                  <div class="form-group">
+                    <la class="sr-only"></la>
+                    <select name="" id="" class="form-control">
+                      <option value="">Pendiente</option>
+                      <option value="">Aceptada</option>
+                      <option value="">Rechazada</option>
+                    </select>
+                  </div>
+
+                  <button class="btn btn-primary">Buscar</button>
+                  <a href="" class="glyphicon glyphicon-plus add right"></a>
+                </form>
+              </div>       
+           </div>       
+      </div>
+  
+</button>
+
+
+      <div class="ViewContent-container">
+        {%  if tasks %}
+        {% for task in tasks %}
+        <article class="Task">
+          <div class="Task-header">
+            <p class="Task-title">
+              {{task.agent.first_name}} {{task.agent.last_name}}
+            </p>
+          </div>
+          <div class="Task-tagContainer">
+            <ul class="Task-tagList">
+              {% for tag in task.tag.all %}
+              <li class="Task-tagItem">{{tag.name}}</li>
+              {% endfor %}
+            </ul>
+          </div>
+          <div class="Task-status">
+            <p class="Task-statusName">
+              {{task.status}}
+            </p>
+          </div>
+          <a href="/tasks/view/{{task.id}}/">ir...</a>
+        </article>
+        {% endfor %}
+        {% endif %}
+          
+      </div>
+    </Section>
+  </div>
+  </div>
 </body>
 
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
 
+
+</script>

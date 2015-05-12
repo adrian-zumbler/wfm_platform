@@ -1,3 +1,6 @@
 from django.contrib import admin
+from .models import Tag
 
-# Register your models here.
+class AdminTag(admin.ModelAdmin):
+	pass
+admin.site.register(Tag,AdminTag)	

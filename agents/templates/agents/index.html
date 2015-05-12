@@ -1,0 +1,113 @@
+{% load static from staticfiles %}
+<script type="text/javascript" src='{% static 'jquery/dist/jquery.js' %}'></script>
+<script type="text/javascript" src='{% static 'webcomponentsjs/webcomponents.js' %}'></script>
+<link rel="stylesheet" type="text/css" href='{% static 'css/main.css'%}'>
+
+<link rel="stylesheet" href="{% static 'bootstrap/dist/css/bootstrap.css'%}">
+<link href='http://fonts.googleapis.com/css?family=Roboto:400,300,500' rel='stylesheet' type='text/css'>
+
+<body>
+  <header class="Header">
+    <figure class="Header-imageContainer">
+      <img src="{% static 'img/LOGOTIPO 1.png'%}" alt="Ideal Contact Center" class="Header-img">
+    </figure>
+    <div class="Header-userContainer">
+      {% if user%}
+      <figure class="Header-avatarContainer col-md-4">
+        <img src="{{user.profile.avatar.url}}" alt="" class="Header-avatar">
+      </figure>
+      <div class="Header-usernameContainer col-md-7">
+        <p class="Header-username">{{user.username}}</p>
+      </div>
+      {% endif %}
+    </div>
+  </header>
+  <div class="MainMenu">
+    <nav class="MainMenu-menu">
+      <ul class="MainMenu-list">
+        <li class="MainMenu-item"><a href="" class="MainMenu-link">Bitacora</a></li>
+        <li class="MainMenu-item"><a href="" class="MainMenu-link">Tareas</a></li>
+        <li class="MainMenu-item"><a href="" class="MainMenu-link">Agentes</a></li>
+      </ul> 
+    </nav>
+  </div>
+  <div class="Main-content">
+    <section class="Search col-md-3">
+      <div class="Search-formContainer">
+        <form action="" method="post" class="Search-Form">
+          {% csrf_token %}
+          <div class="form-group">
+            <label for="" class="Search-label">Nombre</label>
+            <input type="text" name="nameAgent" class="Search-input form-control" placeholder="Nombre">  
+          </div>
+          <div class="form-group">
+            <label>Organizacion</label>
+          <select class="form-control" name="organization" id="organizations">
+            {% if organizations%}
+              {% for organization in organizations %}
+                  <option value="{{organization.id}}">{{organization.name}}</option>
+              {% endfor%}
+            {% endif%}
+            
+          </select>  
+          </div>
+          <div class="form-group">
+            <label>Status</label>
+          <select class="form-control" name="status" id="">
+            <option value="Activo">Activo</option>
+            <option value="Baja">Baja</option>
+          </select> 
+          <button class="button">Buscar</button> 
+          </div>
+          
+          
+        </form>
+      </div>
+    </section>
+    <Section class="ViewContent col-md-9">
+      <div class="ViewContent-container">
+        <table class="table table-striped font-size8">
+        <tr>
+          <th>#</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>status</th>
+          <th>Min Hours</th>
+          <th>Max Hours</th>
+          <th>CSS Number</th>
+          <th>Avaya Number</th>
+          <th>Organization</th>
+          <th>Start Date</th>
+          <th>End Date</th>
+        </tr>
+        {% if agents%}
+            {% for agent in agents %}
+              <tr>
+                <th>{{agent.id}}</th>
+                <th>{{agent.first_name}}</th>
+                <th>{{agent.last_name}}</th>
+                <th>{{agent.email}}</th>
+                <th>{{agent.phone}}</th>
+                <th>{{agent.status}}</th>
+                <th>{{agent.min_hours}}</th>
+                <th>{{agent.max_hours}}</th>
+                <th>{{agent.css_number}}</th>
+                <th>{{agent.avaya_number}}</th>
+                <th>{{agent.organization.name}}</th>
+                <th>{{agent.start_date|date}}</th>
+                <th>{{agent.end_date}}</th>
+              </tr>
+            {% endfor%}
+        {% endif %}
+      </table>  
+      </div>
+      
+    </Section>
+  </div>
+</body>
+
+
+
+

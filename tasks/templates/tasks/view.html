@@ -1,0 +1,127 @@
+{% load static from staticfiles %}
+<script type="text/javascript" src='{% static 'jquery/dist/jquery.js' %}'></script>
+<script type="text/javascript" src='{% static 'webcomponentsjs/webcomponents.js' %}'></script>
+<link rel="stylesheet" type="text/css" href='{% static 'css/main.css'%}'>
+<link href='http://fonts.googleapis.com/css?family=Roboto:400,300,500' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{% static 'bootstrap/dist/css/bootstrap.css'%}">
+
+<script type="text/javascript" src="{% static 'bootstrap/dist/js/bootstrap.min.js'%}"></script>
+
+<body>
+  <header class="Header">
+    
+  </header>
+  <div class="row">
+    
+  
+  <div class="MainMenu padding-reset col-md-2 ">
+     <div class="Header-userContainer">
+      {% if user%}
+      <figure class="Header-avatarContainer">
+        <img src="{{user.profile.avatar.url}}" alt="" class="Header-avatar">
+      </figure>
+      <div class="Header-usernameContainer ">
+        <p class="Header-username">{{user.username}}</p>
+      </div>
+      {% endif %}
+    </div>
+    <nav class="MainMenu-menu">
+      <ul class="MainMenu-list">
+        <li class="MainMenu-item"><a href="" class="MainMenu-link">Bitacora</a></li>
+        <li class="MainMenu-item"><a href="" class="MainMenu-link">Tareas</a></li>
+        <li class="MainMenu-item"><a href="" class="MainMenu-link">Agentes</a></li>
+      </ul> 
+    </nav>
+  </div>
+
+
+
+
+  <div class="Main-content col-md-10">
+    <div class="row">
+      
+    
+      <Section class="ViewContent col-md-12">
+  
+</button>
+
+
+      <div class="ViewContent-container">
+     	<div class="TaskCard">
+     		{% if task %}
+     		<form action="">
+     		<div class="form-group">
+     			<label for="">Nombre del agente</label>
+     			<p class="form control">{{task.agent.first_name}} {{task.agent.last_name}}</p>
+     		</div>
+     		<div class="form-group">
+     			<label for="">Etiquetas</label>
+     			<ul class="Task-tagList">
+     				{% for tag in task.tag.all %}
+     				<li class="Task-tagItem">
+     					{{tag.name}}
+     				</li>
+     				{% endfor %}
+     			</ul>
+     		</div>
+     		<div class="form-group">
+     			<label for="">Estatus</label>
+     			<select name="" id="" class="form-control" default="aceptada">
+     				<option selected="" value="">Pendiente</option>
+     				<option selected="selected"value="aceptada">Aceptada</option>
+     				<option value="">Rechazada</option>
+     			</select>
+     		</div>
+     		<div class="form-group">
+     			<label for="">Archivos</label>
+     			{% if files %}
+     			{% for file in files %}
+     			<a href="{{file.document.url}}" class="TaskCard-url">{{file.document}}</a>
+     			{% endfor%}
+     			{% endif %}
+     		</div>
+     		<div class="form-group">
+     			<label for="">Nombre del solicitante</label>
+     			<p class="form control">Patricia Villegas</p>
+     		</div>
+     		<div class="form-group">
+     			<label for="">Comentarios</label>
+     			{% if comments%}
+     			{% for comment in comments%}
+
+     			<textarea disabled class="form-control margin-bottom"  name="" id="" rows="3">{{comment.text}}
+     			</textarea>
+     			{% endfor%}
+     			{% endif %}
+				<textarea class="form-control" placeholder="Añadir comentario"  name="" id="" rows="3"></textarea>
+     		</div>
+     		<button class="btn btn-primary">Guardar</button>
+     		</form>
+     		{% endif %}
+     	</div>
+      </div>
+    </Section>
+  </div>
+  </div>
+</body>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</script>

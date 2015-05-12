@@ -42,12 +42,15 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_extensions',
     'djangobower',
     'tasks',
     'organization',
     'type_tasks',
     'tags',
     'profiles',
+    'agents',
+    
     
 
 )
@@ -76,6 +79,9 @@ ROOT_URLCONF = 'wfm_plattform.urls'
 
 WSGI_APPLICATION = 'wfm_plattform.wsgi.application'
 
+SUIT_CONFIG = {
+    'ADMIN_NAME' : 'Ideal Contact Center',
+}
 
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
@@ -95,7 +101,7 @@ DATABASES = {
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es-ES'
 
 TIME_ZONE = 'UTC'
 
